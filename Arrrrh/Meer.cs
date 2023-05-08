@@ -10,7 +10,7 @@ namespace Arrrrh {
             FileStream fileOutputStream = new FileStream(@"Insel.bit", FileMode.OpenOrCreate, FileAccess.Write);
             BinaryFormatter binFttr = new BinaryFormatter();
             binFttr.Serialize(fileOutputStream, Island);
-            Console.WriteLine("Datei geschrieben ...");
+            Console.WriteLine("Binary Datei geschrieben ...");
             fileOutputStream.Close();
         }
 
@@ -25,7 +25,7 @@ namespace Arrrrh {
             FileStream fs = new FileStream(@"Insel.xml", FileMode.OpenOrCreate, FileAccess.Write);
             XmlSerializer xml = new(typeof(Insel));
             xml.Serialize(fs, Island);
-            Console.WriteLine("Datei geschrieben ...");
+            Console.WriteLine("XML Datei geschrieben ...");
             fs.Close();
         }
 
@@ -39,14 +39,13 @@ namespace Arrrrh {
         public void SaveJson() {
             FileStream fs = new FileStream(@"Insel.json", FileMode.OpenOrCreate, FileAccess.Write);
             JsonSerializer.Serialize(fs, Island);
-            Console.WriteLine("Datei geschrieben ...");
+            Console.WriteLine("Json Datei geschrieben ...");
             fs.Close();
         }
-
         public void LoadJson() {
             FileStream fs = new FileStream(@"Insel.json", FileMode.Open, FileAccess.Read);
             Island = null;
-            Island = JsonSerializer.Deserialize(fs, Json);
+            Island = JsonSerializer.Deserialize<Insel>(fs);
             fs.Close();
         }
     }

@@ -13,11 +13,13 @@
             //insel.ZeigDichPirat();
             //ozean.SaveBinary();
             //ozean.SaveXML();
+            //ozean.SaveJson();
 
 
 
             //ozean.LoadBinary();
-            ozean.LoadXML();
+            //ozean.LoadXML();
+            ozean.LoadJson();
             ozean.Island.ZeigDichPirat();
 
         }
